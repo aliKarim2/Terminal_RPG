@@ -1,11 +1,12 @@
 # Terminal_RPG
-A terminal playable RPG-Style game
+- A terminal playable RPG-Style game
 
 # Features
-- 11x11 player-traversable map
+- 11x11 Player-Traversable Map
 - 11 Header Files
-- Features like enemies, chests, and items
+- Many Features Including Enemies, Chests, and Items
 
 # Other Info
+- My First Project
 - Began 1/16/24
-- 13 undocumented updates before using GitHub
+- 13 Undocumented Updates Before using GitHub
