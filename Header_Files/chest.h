@@ -1,11 +1,11 @@
 #pragma once
 #include <iomanip>
 #include <iostream>
-#include "z_enemy.h"
-#include "z_armor.h"
-#include "z_weapon.h"
-#include "z_potion.h"
-#include "z_placedObject.h"
+#include "Header_Files/enemy.h"
+#include "Header_Files/armor.h"
+#include "Header_Files/weapon.h"
+#include "Header_Files/potion.h"
+#include "Header_Files/placedObject.h"
 
 
 class Chest : public placedObject{

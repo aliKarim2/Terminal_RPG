@@ -2,15 +2,15 @@
 #include <vector>
 
 //Header Files
-#include "z_player.h" //includes everything else 
-// #include "z_minion.h"
-#include "z_boss.h" //includes enemy
-#include "z_minion.h" //includes enemy
-// #include "z_item.h"
-// #include "z_potion.h"
-// #include "z_weapon.h"
-// #include "z_armor.h"
-#include "z_chest.h"
+#include "Header_Files/player.h" //includes everything else 
+// #include "Header_Files/minion.h"
+#include "Header_Files/boss.h" //includes enemy
+#include "Header_Files/minion.h" //includes enemy
+// #include "Header_Files/item.h"
+// #include "Header_Files/potion.h"
+// #include "Header_Files/weapon.h"
+// #include "Header_Files/armor.h"
+#include "Header_Files/chest.h"
 
 
 int newGame(Player& player);

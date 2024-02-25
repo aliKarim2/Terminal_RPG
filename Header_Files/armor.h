@@ -1,6 +1,6 @@
 #pragma once
 #include <iostream>
-#include "z_item.h"
+#include "Header_Files/item.h"
 
 
 class Armor : public Item{
@@ -15,11 +15,6 @@ class Armor : public Item{
         - flaming spear
         - basic spear
         - Dull stick
-      // std::string legendaryAdjectives [4] = { "", "", "", ""};
-        // std::string epicAdjectives [4] = { "", "", "", ""};
-        // std::string rareAdjectives [4] = { "", "", "", ""};
-        // std::string uncommonAdjectives [4] = { "", "", "", ""};
-        // std::string commonAdjectives [4] = { "", "", "", ""};
         */
     //    std::cout << "MAKING ARMOR NAMES"
         std::string legendaryNames [4] = { "Celestial Aegis", "Terasteel Battlegear", "Supreme Bulwark", "Divine Drapes"};
@@ -50,11 +45,8 @@ class Armor : public Item{
                 std::cout << "ERROR in armor.h makeName()\n";
         }
 
-                //if its default
-                return "ERROR";
-            
-
-        return 0;
+        //if its default
+        return "ERROR";            
     }
     int makeHP(){
         /*

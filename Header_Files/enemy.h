@@ -3,9 +3,9 @@
 #include <fstream>
 #include <memory>
 #include <vector>
-#include "z_random.h"
-#include "z_chest.h"
-#include "z_placedObject.h"
+#include "Header_Files/random.h"
+#include "Header_Files/chest.h"
+#include "Header_Files/placedObject.h"
 
 class Player;
 

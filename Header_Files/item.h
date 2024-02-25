@@ -1,10 +1,10 @@
 #pragma once
-// #include "z_game.h"
+// #include "Header_Files/game.h"
 #include <iostream>
 #include <memory>
 #include <vector>
 #include <string>
-#include "z_random.h"
+#include "Header_Files/random.h"
 enum class Level{
     COMMON,
     UNCOMMON,
@@ -38,8 +38,12 @@ private:
 
     virtual std::string makeName()=0;
     virtual void make(int ct)=0;
-    virtual int getPersonalizedIndex()=0; //returns index of obj in weapon,armor,potions vector
-    virtual int getItemsIndex()=0;        //returns index of obj in items array
+    virtual int getPersonalizedIndex(){
+        return personalizedListIndex;
+    } //returns index of obj in weapon,armor,potions vector
+    virtual int getItemsIndex(){
+        return itemListIndex;
+    }       //returns index of obj in items array
 
     
 protected:

@@ -1,10 +1,10 @@
 #pragma once
 #include <iostream>
 #include <string>
-#include "z_item.h"
-#include "z_random.h"
+#include "Header_Files/item.h"
+#include "Header_Files/random.h"
 
-class Potion : public Item{
+class Potion : public Item {
 
     static std::vector<std::shared_ptr<Potion>> potions;
 
@@ -274,6 +274,10 @@ public:
     virtual void make(int ct) override{
         for (int i = 0; i < ct; i++){
             std::shared_ptr<Potion> ptr = std::make_shared<Potion>();
+
+            personalizedListIndex = Item::getList().size();
+            itemListIndex = potions.size();
+
             potions.push_back(ptr); //add to list
             Item::getList().push_back(ptr);
         }
