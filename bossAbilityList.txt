@@ -1,0 +1,50 @@
+Abyssal Nova	2.0	D1.5	0.5
+Dreadful Vortex	1.8	W0.6	0.4
+Inferno Eruption	2.2	D1.7	0.6
+Celestial Judgment	2.0	H0.3	0.5
+Shadowstep Blitz	1.5	D1.3 W0.7	0.3
+Eldritch Annihilation	2.2	H0.4	0.5
+Spectral Surge	1.7	D1.4	0.4
+Frostbite Barrage	2.0	W0.6	0.5
+Thunderous Shockwave	2.1	D1.6	0.6
+Chaos Warp	1.6	W0.8	0.4
+Crimson Cyclone	1.9	H0.2	0.5
+Astral Imprisonment	2.2	D1.8	0.6
+Doomshroud Pulse	1.8	H0.4	0.4
+Necrotic Wave	2.1	W0.7	0.5
+Eclipse Aegis	1.7	D1.5	0.4
+Mystic Resonance	2.0	W0.5	0.5
+Void Shatter	2.2	D1.6	0.6
+Titanic Slam	1.6	H0.3	0.4
+Vorpal Whirlwind	1.9	D1.4	0.5
+Plaguebearer's Grasp	2.0	W0.8	0.5
+Jade Storm	1.7	H0.2	0.4
+Abyssal Siren's Call	2.1	D1.7	0.6
+Riftquake	2.0	W0.6	0.5
+Savage Roar	1.5	H0.5	0.3
+Harbinger's Havoc	2.2	D1.8	0.6
+Blighted Gaze	1.8	W0.7	0.4
+Ironclad Barricade	2.1	H0.4	0.5
+Soulrend Nova	2.0	D1.5	0.5
+Lunar Eclipse Cascade	1.6	W0.5	0.4
+Cursed Corruption	1.9	D1.4	0.5
+Netherworld Gaze	2.2	H0.3	0.6
+Ebonshade Veil	1.7	W0.8	0.4
+Thunderstrike Surge	1.8	D1.7	0.5
+Dreaded Desolation	2.0	H0.2	0.4
+Abyssal Arcane	2.1	W0.6	0.5
+Ethereal Echo	1.5	D1.3	0.3
+Ravenous Shadows	1.9	H0.5	0.4
+Crimson Tidal Wave	2.0	D1.6	0.5
+Blizzard's Embrace	2.2	W0.7	0.6
+Harmonic Harmony	1.7	H0.4	0.4
+Twisted Technomancy	1.8	D1.5 W0.8	0.5
+Frostfire Frenzy	2.1	H0.3	0.5
+Shadowed Strike	2.0	D1.7	0.6
+Malevolent Mirage	1.6	W0.6	0.4
+Venomous Vortex	1.9	D1.4	0.5
+Doomcaller's Curse	2.2	H0.2	0.6
+Radiant Retribution	1.7	W0.7	0.4
+Phantom Phantasm	2.0	D1.6	0.5
+Molten Meltdown	1.8	H0.5	0.4
+Chrono Cataclysm	1.9	D1.8 W0.5	0.5
