@@ -2,7 +2,7 @@
 #include <vector>
 #include <sstream>
 #include <string>
-#include "Header_Files\enemy.h"
+#include "enemy.h"
 
 class Enemy;
 
@@ -169,7 +169,7 @@ public:
     // }
 
     virtual void addToList(){
-        // std::cout << "ADD TO BOSSES\n";
+        // std::cout << "ADD TO BOSSEs/n";
         bosses.push_back(std::make_unique<Boss>(*this));  
     }
     

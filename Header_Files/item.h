@@ -1,10 +1,10 @@
 #pragma once
-// #include "Header_Files\game.h"
+// #include "game.h"
 #include <iostream>
 #include <memory>
 #include <vector>
 #include <string>
-#include "Header_Files\random.h"
+#include "random.h"
 enum class Level{
     COMMON,
     UNCOMMON,
@@ -36,7 +36,7 @@ class Item{
 private:
     static std::vector<std::shared_ptr<Item>> items;
 
-    virtual std::string makeName()=0;
+    virtual void makeName()=0;
     virtual void make(int ct)=0;
     
 protected:
@@ -93,8 +93,8 @@ protected:
 public:
     bool test = false;
 
-    Item(){
-        makeRarity(0.0f, 1.0f); //default range
+    Item(float beginRaritySpread = 0.0f, float endRaritySpread = 1.0f){
+        makeRarity(beginRaritySpread, endRaritySpread); //default range
 
 
     }

@@ -1,8 +1,8 @@
 #pragma once
 #include <iostream>
 #include <string>
-#include "Header_Files\item.h"
-#include "Header_Files\random.h"
+#include "item.h"
+#include "random.h"
 
 class Potion : public Item {
 
@@ -15,7 +15,7 @@ class Potion : public Item {
 
 
     //Constructor Functions
-    std::string makeName() override{
+    void makeName() override{
         std::string myName = "NAMEERROR"; //set name to error 
         /*NAME FORMULA
         //Energized(y/n) + adjective + potion + effect (healing/dmg/weakness)
@@ -115,7 +115,7 @@ class Potion : public Item {
         //construct name
         myName += adj + ' ' + pot + ' ' + fx;
 
-        return myName;
+        name = myName;
     }
     std::string makeDescription(){
         std::string verb;
@@ -245,7 +245,7 @@ public:
         description = makeDescription();
 
     //NAME
-        name = makeName();
+        makeName();
     }
     Potion(float myRarityBegin, float myRarityEnd){
         makeRarity(myRarityBegin, myRarityEnd); //makes rarity specific
@@ -264,7 +264,7 @@ public:
         description = makeDescription();
 
     //NAME
-        name = makeName();
+        makeName();
     }
     ~Potion()override{
         std::cout << "Potion destructor!\n";

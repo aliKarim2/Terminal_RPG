@@ -1,13 +1,13 @@
 #pragma once
 #include <iostream>
-#include "Header_Files\item.h"
+#include "item.h"
 
 
 class Armor : public Item{
     static std::vector<std::shared_ptr<Armor>> armors;
     int HP;
 
-    std::string makeName()override{
+    void makeName()override{
         /*NAME FORMULA
         adj + swordName
 
@@ -24,29 +24,31 @@ class Armor : public Item{
         std::string commonNames [4] = { "Raggedy Garments", "Ordinary Coverings", "Civilian Attire", "Leather Paddings" };
 
 
+        //if its default
+        name = "ERROR";   
+
         int index = Random::getRandomInt(0, 3);
         switch(rarity.level){
             case Level::LEGENDARY:
-                return legendaryNames[index];
+                name = legendaryNames[index];
                 break;
             case Level::EPIC:
-                return epicNames[index];
+                name = epicNames[index];
                 break;
             case Level::RARE:
-                return rareNames[index];
+                name = rareNames[index];
                 break;
             case Level::UNCOMMON:
-                return uncommonNames[index];
+                name = uncommonNames[index];
                 break;
             case Level::COMMON:
-                return commonNames[index];
+                name = commonNames[index];
                 break;
             default:
                 std::cout << "ERROR in armor.h makeName()\n";
         }
 
-        //if its default
-        return "ERROR";            
+             
     }
     int makeHP(){
         /*
@@ -98,7 +100,7 @@ class Armor : public Item{
 public:
     Armor(){
     //Name
-        name = makeName();
+        makeName();
 
     //HP
         HP = makeHP();
@@ -107,7 +109,7 @@ public:
     Armor(float myRarityBegin, float myRarityEnd){
         makeRarity(myRarityBegin, myRarityEnd); //makes rarity specific
     //Name
-        name = makeName();
+        makeName();
 
     //HP
         HP = makeHP();

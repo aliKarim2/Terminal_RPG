@@ -1,6 +1,6 @@
 #pragma once
 #include <iostream>
-#include "Header_Files\item.h"
+#include "item.h"
 
 
 class Weapon : public Item{
@@ -10,7 +10,7 @@ class Weapon : public Item{
 
 
     //constructor functions
-    std::string makeName() override{
+    void makeName() override{
         std::string legendaryNames [4] = { "Excalibur of Flame", "Cutlass of Divination", 
                                            "Longsword of Fury", "Saber of Transcendence"};
         std::string epicNames [4] = { "Thunderous Broadsword", "Majestic Rapier", "Hero's Blade", "Arcane's Edge"};
@@ -22,33 +22,29 @@ class Weapon : public Item{
             int index = Random::getRandomInt(0, 3);
             // std::cout << "INDEX: " << index << '\n';    
 
+            name = "ERROR"; //set to default value (should be changed later)
+
             switch(rarity.level){
                 case Level::LEGENDARY:
-                    return legendaryNames[index];
+                    name = legendaryNames[index];
                     break;
                 case Level::EPIC:
-                    return epicNames[index];
+                    name = epicNames[index];
                     break;
                 case Level::RARE:
-                    return rareNames[index];
+                    name = rareNames[index];
                     break;
                 case Level::UNCOMMON:
-                    return uncommonNames[index];
+                    name = uncommonNames[index];
                     break;
                 case Level::COMMON:
-                    return commonNames[index];
+                    name = commonNames[index];
                     break;
                 default:
                     std::cout << "ERROR in weapon.h makeName()\n";
-            }
-
-            //if its default
-            return "ERROR";
-        
-
-        return 0;
+            }        
     }
-    int makeDamage(){
+    void makeDamage(){
         /*
         DAMAGE = rarityDMG + SPREAD
         - Legendary ex: 450 + 26
@@ -85,46 +81,49 @@ class Weapon : public Item{
        return 460
        */
 
+        damage = 9999; //set it to a default value
+
         switch(rarity.level){
                 case Level::LEGENDARY:
-                    return legendaryDamage + SPREAD - (legendaryDamage + SPREAD) % 5;
+                    damage = legendaryDamage + SPREAD - (legendaryDamage + SPREAD) % 5;
+                    break;
 
                 case Level::EPIC:
-                    return epicDamage + SPREAD - (epicDamage + SPREAD) % 5;
+                    damage = epicDamage + SPREAD - (epicDamage + SPREAD) % 5;
+                    break;
 
                 case Level::RARE:
-                    return rareDamage + SPREAD - (rareDamage + SPREAD) % 5;
+                    damage = rareDamage + SPREAD - (rareDamage + SPREAD) % 5;
+                    break;
 
                 case Level::UNCOMMON:
-                    return uncommonDamage + SPREAD - (uncommonDamage + SPREAD) % 5;
+                    damage = uncommonDamage + SPREAD - (uncommonDamage + SPREAD) % 5;
+                    break;
 
                 case Level::COMMON:
-                    return commonDamage + SPREAD - (commonDamage + SPREAD) % 5;
-
+                    damage = commonDamage + SPREAD - (commonDamage + SPREAD) % 5;
+                    break;
                 default:
                     std::cout << "ERROR in weapon.h makeName()\n";
         }
-
-        //if smth goes wrong
-        return 10000;
         
     }
 
 public:
     Weapon(){
     //DAMAGE
-        damage = makeDamage(); 
+        makeDamage(); 
 
     //NAME
-        name = makeName();
+        makeName();
     }
     Weapon(float myRarityBegin, float myRarityEnd){
-        makeRarity(myRarityBegin, myRarityEnd); //makes rarity specific
+        makeRarity(myRarityBegin, myRarityEnd); //makes rarity specific (override default rarity from item.h)
     //DAMAGE
-        damage = makeDamage(); 
+        makeDamage(); 
 
     //NAME
-        name = makeName();
+        makeName();
     }
     ~Weapon()override{
         std::cout << "Weapon destructor!\n";

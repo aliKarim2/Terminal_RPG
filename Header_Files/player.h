@@ -2,12 +2,12 @@
 
 #include <iostream>
 #include <iomanip>
-#include "Header_Files\enemy.h"
-#include "Header_Files\item.h"
-#include "Header_Files\armor.h"
-#include "Header_Files\weapon.h"
-#include "Header_Files\potion.h"
-#include "Header_Files\placedObject.h"
+#include "enemy.h"
+#include "item.h"
+#include "armor.h"
+#include "weapon.h"
+#include "potion.h"
+#include "placedObject.h"
 // class Item;
 // class Enemy;
 // class Boss;

@@ -3,9 +3,9 @@
 #include <fstream>
 #include <memory>
 #include <vector>
-#include "Header_Files\random.h"
-#include "Header_Files\chest.h"
-#include "Header_Files\placedObject.h"
+#include "random.h"
+#include "chest.h"
+#include "placedObject.h"
 
 class Player;
 
@@ -15,7 +15,7 @@ class Enemy : public placedObject{
 private:
     static std::vector<Coord> usedCoords;
     
-    //Constructor Functions
+    //Constructor Functions`
    
 protected:
     virtual void fillLists()=0;

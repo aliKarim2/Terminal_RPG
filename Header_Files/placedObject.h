@@ -1,7 +1,7 @@
 #pragma once
 #include <iostream>
 #include <vector>
-#include "Header_Files\random.h"
+#include "random.h"
 
 struct Coord{
     int x;

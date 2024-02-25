@@ -2,15 +2,15 @@
 #include <vector>
 
 //Header Files
-#include "Header_Files\player.h" //includes everything else 
-// #include "Header_Files\minion.h"
-#include "Header_Files\boss.h" //includes enemy
-#include "Header_Files\minion.h" //includes enemy
-// #include "Header_Files\item.h"
-// #include "Header_Files\potion.h"
-// #include "Header_Files\weapon.h"
-// #include "Header_Files\armor.h"
-#include "Header_Files\chest.h"
+#include "Header_Files/player.h" //includes everything else 
+// #include "Header_Files/minion.h"
+#include "Header_Files/boss.h" //includes enemy
+#include "Header_Files/minion.h" //includes enemy
+// #include "Header_Files/item.h"
+// #include "Header_Files/potion.h"
+// #include "Header_Files/weapon.h"
+// #include "Header_Files/armor.h"
+#include "Header_Files/chest.h"
 
 
 int newGame(Player& player);
@@ -99,7 +99,7 @@ int newGame(Player& player){
 
     }
     
-    std::cout << "LOCATIONS\n";
+    std::cout << "LOCATIONs/n";
     std::cout << "CHEST: ";
     std::cout << chestList[0]->getCoord() << '\n';
     std::cout << "MINION: ";

@@ -2,15 +2,15 @@
 #include <vector>
 
 //Header Files
-#include "z_player.h" //includes everything else 
-// #include "z_minion.h"
-#include "z_boss.h" //includes enemy
-#include "z_minion.h" //includes enemy
-// #include "z_item.h"
-// #include "z_potion.h"
-// #include "z_weapon.h"
-// #include "z_armor.h"
-#include "z_chest.h"
+#include "Header_Files/player.h" //includes everything else 
+// #include "Header_Files/minion.h"
+#include "Header_Files/boss.h" //includes enemy
+#include "Header_Files/minion.h" //includes enemy
+// #include "Header_Files/item.h"
+// #include "Header_Files/potion.h"
+// #include "Header_Files/weapon.h"
+// #include "Header_Files/armor.h"
+#include "Header_Files/chest.h"
 
 int main(){
 
@@ -69,101 +69,15 @@ int main(){
     Player player("REDF");
     Chest chest;
 
-    bool validInput;
-    int choice;
-    std::cout << "You Found a Chest!\n";
-    std::cout << "CONTENTS: \n";
+    
+    Armor a1;
+
+    a1.getRarityLevel();
 
 
-    do{
-        chest.showContents();
+    Armor a2(0.9f, 1.0f);
 
-        std::cout << "Select an item or -1 to leave:\n";
-        //INPUT VALIDATION
-        do{
-            if (!(std::cin >> choice)) { //if input not int
-                std::cin.clear();  // Clear the error flag
-                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');  // Discard invalid input
-                std::cout << "Invalid input. Please enter a number." << std::endl;
-            } else {
-                if(choice >= 1 && choice <= chest.getLoot().size()){ //if input is valid number (is an item #)
-                    break;  // Exit the loop if input is valid
-                } 
-                else if(choice == -1){
-                    return 0; //exit function
-                }
-                else {
-                    std::cout << "Enter a number between (1 - " << chest.getLoot().size() << ") or -1 to leave.\n";
-                }    
-            }
-        }while(true);        
-
-        choice -= 1;
-        //Now, input should be a valid int
-        std::cout << "You picked: " << chest.getLoot()[choice]->getName() << '\n';
-        std::cin.get();  
-
-        //Determine item type and act accoordingly
-        {
-            if (std::shared_ptr<Weapon> weapon = std::dynamic_pointer_cast<Weapon>(chest.getLoot()[choice])) {
-                std::cout << "You picked a weapon.\n";
-                std::cout << "Adding it...\n";
-                player.setWeapon(weapon);
-                std::cout << "Added it\n";
-                
-
-            } else if (std::shared_ptr<Potion> potion = std::dynamic_pointer_cast<Potion>(chest.getLoot()[choice])) {
-                std::cout << "You picked a potion.";
-                std::cout << "Adding it...\n";
-                if(!player.addPotion(potion)){
-                    std::cout << "You have the max amount of potions!\n";
-                }
-                else
-                    std::cout << "Added it\n";
-
-            } else if (std::shared_ptr<Armor> armor = std::dynamic_pointer_cast<Armor>(chest.getLoot()[choice])) {
-                std::cout << "You picked an armor.";
-                std::cout << "Adding it...\n";
-                player.setArmor(armor);
-                std::cout << "Added it\n";
-                
-            
-            }
-        }
-
-        
-
-        
-        // std::cout << "Current Weapon: ";
-        // if(player.getWeapon() != nullptr) {
-        //     std::cout << player.getWeapon()->getName() << '\n';                      
-        // }              
-        // else{
-        //     std::cout << "NULLPTR\n";
-        // }    
-        // std::cin.get();                    
-        // std::cout << "Current Armor: ";    
-        // if(player.getArmor() != nullptr) {
-        //     std::cout << player.getArmor()->getName() << '\n';                      
-        // }              
-        // else{
-        //     std::cout << "NULLPTR\n";
-        // }   
-        // std::cin.get();                    
-        // std::cout << "Current Potions: \n";                      
-        // for(const auto& potion : player.getPotions()){
-        //     if(potion != nullptr){
-        //         std::cout << '-' << potion->getName();
-        //         std::cout << '\n';
-        //     }
-        //     else{
-        //         std::cout << "-NULLPTR\n";
-        //     }
-        // }        
-
-        std::cin.get();                    
-
-    }while(choice != -1); //while player has chest open
+    a2.getRarityLevel();
 
 
     std::cout << "Program Terminated";
