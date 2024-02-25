@@ -1,10 +1,10 @@
 #pragma once
-// #include "Header_Files/game.h"
+// #include "Header_Files\game.h"
 #include <iostream>
 #include <memory>
 #include <vector>
 #include <string>
-#include "Header_Files/random.h"
+#include "Header_Files\random.h"
 enum class Level{
     COMMON,
     UNCOMMON,
@@ -38,13 +38,6 @@ private:
 
     virtual std::string makeName()=0;
     virtual void make(int ct)=0;
-    virtual int getPersonalizedIndex(){
-        return personalizedListIndex;
-    } //returns index of obj in weapon,armor,potions vector
-    virtual int getItemsIndex(){
-        return itemListIndex;
-    }       //returns index of obj in items array
-
     
 protected:
     int personalizedListIndex;
@@ -60,7 +53,7 @@ protected:
         .4-.2   U
         .2-0    C
 
-        lower values are inclusive; .8 would be L, .799 would be E
+        lower values are inclusive; .9 would be L, .899 would be E
         */
 
         //ASSIGN rarityLevel
@@ -104,49 +97,6 @@ public:
         makeRarity(0.0f, 1.0f); //default range
 
 
-        // float generatedFloat = Random::getRandomFloat(0.0f, 1.0f);
-
-        // /*
-        // 1-.9    L
-        // .9-.7   E
-        // .7-.4   R
-        // .4-.2   U
-        // .2-0    C
-
-        // lower values are inclusive; .8 would be L, .799 would be E
-        // */
-
-        // //ASSIGN rarityLevel
-        {
-        //     //MIN VALUES TO GET VALUE:
-        //     const float LEG = 0.9f; //(need at least .9 for LEG)
-        //     const float EPC = 0.7f;
-        //     const float RAR = 0.4f;
-        //     const float UNC = 0.2f;
-
-        //     if(1.0f >= generatedFloat && generatedFloat >= LEG){
-        //         rarity.level = Level::LEGENDARY;
-        //         rarity.title = "LEGENDARY";
-        //     }
-        //     else if(LEG > generatedFloat && generatedFloat >= EPC){
-        //         rarity.level = Level::EPIC;
-        //         rarity.title = "EPIC";
-        //     }
-        //     else if(EPC > generatedFloat && generatedFloat >= RAR){
-        //         rarity.level = Level::RARE;
-        //         rarity.title = "RARE";
-        //     }
-        //     else if(RAR > generatedFloat && generatedFloat >= UNC){
-        //         rarity.level = Level::UNCOMMON;
-        //         rarity.title = "UNCOMMON";
-        //     }
-        //     else if(UNC > generatedFloat && generatedFloat >= 0.0f){
-        //         rarity.level = Level::COMMON;
-        //         rarity.title = "COMMON";
-        //     }  
-        }
-        
-
     }
     virtual ~Item(){
         std::cout << "ITEM DESTRUCTOR\n";
@@ -156,7 +106,8 @@ public:
     std::string getRarityLevel()const{return rarity.title;}
     static std::vector<std::shared_ptr<Item>>& getList(){return items;}
     virtual std::string getItemType()const=0;
-    
+    virtual int getPersonalizedIndex()const{return personalizedListIndex;} //returns index of obj in weapon,armor,potions vector
+    virtual int getItemsIndex(){return itemListIndex;}   //returns index of obj in items array
 };
 
 std::vector<std::shared_ptr<Item>> Item::items;

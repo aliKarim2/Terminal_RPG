@@ -1,15 +1,15 @@
 #pragma once
 #include <iostream>
 #include <string>
-#include "Header_Files/item.h"
-#include "Header_Files/random.h"
+#include "Header_Files\item.h"
+#include "Header_Files\random.h"
 
 class Potion : public Item {
 
     static std::vector<std::shared_ptr<Potion>> potions;
 
     char type; //Heal, Strength, Weakness
-    int potency; //0000-10000 (the strength of the potion)    
+    int potency; //1-100, a percent  
     bool energized; //has ability to skip enemy turn
     std::string description;
 
@@ -288,7 +288,7 @@ public:
     std::string getItemType()const override{return "POTION";}
     char getType()const{return type;}
     int getPotency()const{return potency;}
-    bool getEnergized(){return energized;}
+    bool getEnergized()const{return energized;}
     std::string getDescription()const{return description;}
     static std::vector<std::shared_ptr<Potion>>& getList(){return potions;}
 

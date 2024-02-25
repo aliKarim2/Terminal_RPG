@@ -1,6 +1,6 @@
 #pragma once
 #include <iostream>
-#include "Header_Files/item.h"
+#include "Header_Files\item.h"
 
 
 class Weapon : public Item{
@@ -132,7 +132,6 @@ public:
     virtual void make(int ct) override{
         for (int i = 0; i < ct; i++){
             std::shared_ptr<Weapon> ptr = std::make_shared<Weapon>();
-//-------------------------------------------------------------------------------------------------------------------
             personalizedListIndex = Item::getList().size();
             itemListIndex = weapons.size();
 

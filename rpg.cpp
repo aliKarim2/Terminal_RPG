@@ -2,15 +2,15 @@
 #include <vector>
 
 //Header Files
-#include "Header_Files/player.h" //includes everything else 
-// #include "Header_Files/minion.h"
-#include "Header_Files/boss.h" //includes enemy
-#include "Header_Files/minion.h" //includes enemy
-// #include "Header_Files/item.h"
-// #include "Header_Files/potion.h"
-// #include "Header_Files/weapon.h"
-// #include "Header_Files/armor.h"
-#include "Header_Files/chest.h"
+#include "Header_Files\player.h" //includes everything else 
+// #include "Header_Files\minion.h"
+#include "Header_Files\boss.h" //includes enemy
+#include "Header_Files\minion.h" //includes enemy
+// #include "Header_Files\item.h"
+// #include "Header_Files\potion.h"
+// #include "Header_Files\weapon.h"
+// #include "Header_Files\armor.h"
+#include "Header_Files\chest.h"
 
 
 int newGame(Player& player);
@@ -199,6 +199,9 @@ while(running){
             // chestList.erase(chestList.begin/);
             //make it so that player can take all of the contents from chest if he wants
 
+
+            // chestList.erase(chestList.begin() )
+
             std::cin.get();
         }
     }    
@@ -285,6 +288,7 @@ int openChest(Player& player, Chest& chest){
         chest.showContents(); //show chest inventory
 
         std::cout << "Select an item or -1 to leave:\n";
+
         //INPUT VALIDATION
         do{
             if (!(std::cin >> choice)) { //if input not int
