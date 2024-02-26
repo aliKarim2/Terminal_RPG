@@ -126,7 +126,8 @@ public:
         makeName();
     }
     ~Weapon()override{
-        std::cout << "Weapon destructor!\n";
+        if(!test)
+            std::cout << "Weapon destructor!\n";
     }
     virtual void make(int ct) override{
         for (int i = 0; i < ct; i++){

@@ -99,7 +99,8 @@ public:
 
     }
     virtual ~Item(){
-        std::cout << "ITEM DESTRUCTOR\n";
+        if(!test)
+            std::cout << "ITEM DESTRUCTOR\n";
         // std::cout << name << " DELETED\n";
     }
     std::string getName()const{return name;}
@@ -108,6 +109,15 @@ public:
     virtual std::string getItemType()const=0;
     virtual int getPersonalizedIndex()const{return personalizedListIndex;} //returns index of obj in weapon,armor,potions vector
     virtual int getItemsIndex(){return itemListIndex;}   //returns index of obj in items array
+
+
+    void fromChest(bool op){
+        if(op){ //if its from a chest
+            test = true;
+        }
+
+    }
+
 };
 
 std::vector<std::shared_ptr<Item>> Item::items;

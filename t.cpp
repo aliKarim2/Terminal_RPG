@@ -36,50 +36,53 @@ int main(){
         const int POTION_SPAWN = 10;
         const int CHEST_SPAWN = 10;
 
-        Minion minionTest;
-        Boss bossTest;
+        // Minion minionTest;
+        // Boss bossTest;
         
         Armor armorTest;
         Weapon weaponTest;
         Potion potionTest;
-        
         Chest chestTest;
 
         //make them test obj so destructor is not called
-        minionTest.test = true;
-        bossTest.test = true;
+        // minionTest.test = true;
+        // bossTest.test = true;
         armorTest.test = true;
         weaponTest.test = true;
         potionTest.test = true;
+        chestTest.test = true;
         
         // std::cout << "C1\n";
-        minionTest.make(MINION_SPAWN);
-        bossTest.make(BOSS_SPAWN);
+        // minionTest.make(MINION_SPAWN);
+        // bossTest.make(BOSS_SPAWN);
 
-        weaponTest.make(WEAPON_SPAWN);
-        armorTest.make(ARMOR_SPAWN);
-        potionTest.make(POTION_SPAWN);
+        // weaponTest.make(WEAPON_SPAWN);
+        // armorTest.make(ARMOR_SPAWN);
+        // potionTest.make(POTION_SPAWN);
 
-        chestTest.make(CHEST_SPAWN);
+        // chestTest.make(CHEST_SPAWN);
         // std::cout << "C4\n";
 
 
     }
 
-    Player player("REDF");
-    Chest chest;
+    // Player player("REDF");
+    // Chest chest;
 
     
-    Armor a1;
+    // Armor a1;
 
-    a1.getRarityLevel();
+    // std::cout <<  a1.getRarityLevel();
+
+    // std::cout << '\n';
+
+    // Armor a2(0.9f, 1.0f);                 //generates only legendary 
+    // std::cout << '\n';
+    // std::cout <<  a2.getRarityLevel();
+    
 
 
-    Armor a2(0.9f, 1.0f);
-
-    a2.getRarityLevel();
-
-
+    std::cin.get();
     std::cout << "Program Terminated";
 
   return 0;

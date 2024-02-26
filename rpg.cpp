@@ -99,7 +99,7 @@ int newGame(Player& player){
 
     }
     
-    std::cout << "LOCATIONs/n";
+    std::cout << "LOCATIONS\n";
     std::cout << "CHEST: ";
     std::cout << chestList[0]->getCoord() << '\n';
     std::cout << "MINION: ";
@@ -108,12 +108,6 @@ int newGame(Player& player){
     std::cout << bossList[0]->getCoord() << '\n';
 
 
-    // std::cout << "BOSSES LOOT\n";
-    // for(const auto& boss : bossList){
-    //     boss->getLoot().showContents();
-    //     std::cout << '\n';
-    //     std::cin.get();
-    // }
 
 
     std::cin.get();

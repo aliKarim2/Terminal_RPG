@@ -16,7 +16,7 @@ class Chest : public placedObject{
 
     
     void makeLoot(float raritySpreadBegin, float raritySpreadEnd){
-
+        
        int items = Random::getRandomInt(2,3);
         for(int i = 0; i < items; i++){
             
@@ -45,6 +45,8 @@ class Chest : public placedObject{
         }
     }
 public:
+    bool test = false;
+
     //Constructor for PLACEABLE Chests found in map
     Chest(){
 
@@ -59,6 +61,17 @@ public:
     }
 
     ~Chest(){
+        // if(!test){
+        //     std::cout << "CHEST DESTRUCTOR\n";
+        // }
+
+        // for (auto it = loot.begin(); it != loot.end(); ++it) {
+        //     it->reset();
+        // }
+
+        for(const auto& item : loot){
+            item->fromChest(true);
+        }
 
     }
     void make(int ct){
