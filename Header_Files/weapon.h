@@ -140,7 +140,7 @@ public:
         }
     }
 
-    std::string getItemType()const override{return "WEAPON";}
+    std::string getItemType()const override{return "(WEAPON)";}
     static std::vector<std::shared_ptr<Weapon>>& getList(){return weapons;}
     int getDamage()const{return damage;}
 };

@@ -209,6 +209,7 @@ public:
         return op;
     }
 
+    //"View" Functions
     void viewInventory(){
 
         viewWeapon();
@@ -288,6 +289,8 @@ public:
 
     }
 
+
+    //Getters Setters for player items
     void setWeapon(std::shared_ptr<Weapon> weapon){
         currentWeapon = weapon;
         damage = currentWeapon->getDamage();
@@ -313,11 +316,13 @@ public:
         }
         return true;
     }
-    
+    std::shared_ptr<Armor>& getArmor(){return currentArmor;}
+    std::shared_ptr<Weapon>& getWeapon(){return currentWeapon;}
+    std::vector<std::shared_ptr<Potion>>& getPotions(){return currentPotions;}
 
 
 
-    //getters and setters
+    //General getters and setters
     void changeScore(int value){
         score += value;
 
@@ -343,9 +348,7 @@ public:
     unsigned int getDamageMult(){return damageMult;}
     unsigned int getTotalDamage(){return totalDamage;}
 
-    std::shared_ptr<Armor>& getArmor(){return currentArmor;}
-    std::shared_ptr<Weapon>& getWeapon(){return currentWeapon;}
-    std::vector<std::shared_ptr<Potion>>& getPotions(){return currentPotions;}
+    
     // std::shared_ptr<Armor> getArmor(){return currentArmor;}
 
    };

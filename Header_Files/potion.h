@@ -286,7 +286,7 @@ public:
     
     
     //GETTERS
-    std::string getItemType()const override{return "POTION";}
+    std::string getItemType()const override{return "(POTION)";}
     char getType()const{return type;}
     int getPotency()const{return potency;}
     bool getEnergized()const{return energized;}

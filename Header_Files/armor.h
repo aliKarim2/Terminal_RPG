@@ -130,7 +130,7 @@ public:
         }
     }
 
-    std::string getItemType()const override{return "ARMOR";}
+    std::string getItemType()const override{return "(ARMOR)";}
     int getHP()const{return HP;}
     static std::vector<std::shared_ptr<Armor>>& getList(){return armors;}
 

@@ -30,7 +30,7 @@ int main(){
     const int ARMOR_SPAWN = 1;
     const int WEAPON_SPAWN = 1;
     const int POTION_SPAWN = 1;
-    const int CHEST_SPAWN = 1;
+    const int CHEST_SPAWN = 5;
     const int BOSS_SPAWN = 1;
     const int MINION_SPAWN = 1;
 
@@ -103,7 +103,16 @@ int main(){
 
     player.viewInventory();
 
-    
+    std::cin.ignore();
+    std::cin.get();
+
+
+
+    openChest(player, *chestList[1]);
+
+    std::cout << "CLOSED CHEST NOW\n";
+
+    player.viewInventory();
     
 
 
@@ -146,65 +155,39 @@ int openChest(Player& player, Chest& chest){
 
     choice -= 1;
     //Now, input should be a valid int
+
+    if(chest.getLoot()[choice] == nullptr){
+      std::cout << "You picked an empty slot! Pick a slot with an item in it!\n";
+      continue;
+    }
+
     std::cout << "You picked: " << chest.getLoot()[choice]->getName() << '\n';
-    std::cin.get();  
 
     //Determine item type and act accoordingly
     {
-      if (std::shared_ptr<Weapon> weapon = std::dynamic_pointer_cast<Weapon>(chest.getLoot()[choice])) {
-          std::cout << "You picked a weapon.\n";
-          std::cout << "Adding it...\n";
-          player.setWeapon(weapon);
-          std::cout << "Added it\n";
-          
+      if (std::shared_ptr<Weapon> weapon = std::dynamic_pointer_cast<Weapon>(chest.getLoot()[choice])){ 
+          player.setWeapon(weapon); //replace player item with selected loot
+          std::cout << "Successfully added it to your inventory!\n";
 
+          chest.getLoot()[choice] = nullptr; //replace loot with null ptr
+          
       } else if (std::shared_ptr<Potion> potion = std::dynamic_pointer_cast<Potion>(chest.getLoot()[choice])) {
-          std::cout << "You picked a potion.";
-          std::cout << "Adding it...\n";
-          if(!player.addPotion(potion)){
-              std::cout << "You have the max amount of potions!\n";
+
+          if(!player.addPotion(potion)){ //returns false if potion list is full
+            std::cout << "You have the max amount of potions!\n";
           }
-          else
-              std::cout << "Added it\n";
-
+          else{
+            std::cout << "Successfully added it to your inventory!\n";
+            chest.getLoot()[choice] = nullptr;//replace loot with null ptr
+          }
+            
       } else if (std::shared_ptr<Armor> armor = std::dynamic_pointer_cast<Armor>(chest.getLoot()[choice])) {
-          std::cout << "You picked an armor.";
-          std::cout << "Adding it...\n";
-          player.setArmor(armor);
-          std::cout << "Added it\n";
-          
-      
-      }
-    }
-      
-    // std::cout << "Current Weapon: ";
-    // if(player.getWeapon() != nullptr) {
-    //     std::cout << player.getWeapon()->getName() << '\n';                      
-    // }              
-    // else{
-    //     std::cout << "NULLPTR\n";
-    // }    
-    // std::cin.get();                    
-    // std::cout << "Current Armor: ";    
-    // if(player.getArmor() != nullptr) {
-    //     std::cout << player.getArmor()->getName() << '\n';                      
-    // }              
-    // else{
-    //     std::cout << "NULLPTR\n";
-    // }   
-    // std::cin.get();                    
-    // std::cout << "Current Potions: \n";                      
-    // for(const auto& potion : player.getPotions()){
-    //     if(potion != nullptr){
-    //         std::cout << '-' << potion->getName();
-    //         std::cout << '\n';
-    //     }
-    //     else{
-    //         std::cout << "-NULLPTR\n";
-    //     }
-    // }        
+          player.setArmor(armor);//replace player item with selected loot
+          std::cout << "Successfully added it to your inventory!\n";
 
-    std::cin.get();                    
+          chest.getLoot()[choice] = nullptr;//replace loot with null ptr
+      }
+    }             
 
   }while(choice != -1); //while player has chest open
 
