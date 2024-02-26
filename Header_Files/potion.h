@@ -267,8 +267,8 @@ public:
         makeName();
     }
     ~Potion()override{
-        if(!test)
-            std::cout << "Potion destructor!\n";
+        // if(!test)
+        //     std::cout << "Potion destructor!\n";
 
     }
     

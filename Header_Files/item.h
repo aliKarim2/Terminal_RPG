@@ -99,8 +99,8 @@ public:
 
     }
     virtual ~Item(){
-        if(!test)
-            std::cout << "ITEM DESTRUCTOR\n";
+        // if(!test)
+            // std::cout << "ITEM DESTRUCTOR\n";
         // std::cout << name << " DELETED\n";
     }
     std::string getName()const{return name;}
@@ -111,11 +111,8 @@ public:
     virtual int getItemsIndex(){return itemListIndex;}   //returns index of obj in items array
 
 
-    void fromChest(bool op){
-        if(op){ //if its from a chest
+    void overrideDestructor(){
             test = true;
-        }
-
     }
 
 };

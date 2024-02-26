@@ -116,8 +116,8 @@ public:
     }
     
     ~Armor()override{
-        if(!test)
-            std::cout << "Armor destructor!\n";
+        // if(!test)
+        //     std::cout << "Armor destructor!\n";
 
     }
 

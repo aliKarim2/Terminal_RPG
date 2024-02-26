@@ -85,10 +85,14 @@ public:
 
     }
     
-    ~Minion(){
+    ~Minion() override {
 
         // if(!test)
             // std::cout << name << " DIED!!!\n";
+        for(const auto& item : dropLoot.getLoot()){
+            item->overrideDestructor(); //set all items in chest as test objects, so that they dont have destructor msg
+        }
+       
     }
 
     virtual void make(int ct){

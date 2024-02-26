@@ -40,7 +40,12 @@ public:
         makeCoord();
     }
     
-    ~Enemy(){
+    virtual ~Enemy(){
+
+        // for(const auto& item : dropLoot.getLoot()){
+        //     item->overrideDestructor(); //set all items in chest as test objects, so that they dont have destructor msg
+        // }
+
 
         // if(!test)
             // std::cout << name << " DIED!!!\n";
@@ -88,7 +93,7 @@ public:
     }
 
 
-    Chest getLoot(){return dropLoot;}
+    Chest getDrops(){return dropLoot;}
 
     static std::vector<Coord> getUsedCoords(){return usedCoords;}
 

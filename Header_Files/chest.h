@@ -45,7 +45,6 @@ class Chest : public placedObject{
         }
     }
 public:
-    bool test = false;
 
     //Constructor for PLACEABLE Chests found in map
     Chest(){
@@ -61,17 +60,11 @@ public:
     }
 
     ~Chest(){
-        // if(!test){
-        //     std::cout << "CHEST DESTRUCTOR\n";
-        // }
-
-        // for (auto it = loot.begin(); it != loot.end(); ++it) {
-        //     it->reset();
-        // }
 
         for(const auto& item : loot){
-            item->fromChest(true);
+            item->overrideDestructor(); //set all items in chest as test objects, so that they dont have destructor msg
         }
+
 
     }
     void make(int ct){
@@ -79,6 +72,7 @@ public:
             chests.push_back(std::make_shared<Chest>()); //add to list
         }
     }
+    
 
         
     void showContents(){
