@@ -53,7 +53,7 @@ public:
       makeCoord();
     }
 
-    //Constructor for loot
+    //Constructor for loot (doesnt need coords bc it will be with an enemy)
     Chest(float begin, float end){ 
 
       makeLoot(begin, end); //specified values

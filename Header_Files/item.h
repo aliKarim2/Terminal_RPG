@@ -104,7 +104,7 @@ public:
         // std::cout << name << " DELETED\n";
     }
     std::string getName()const{return name;}
-    std::string getRarityLevel()const{return rarity.title;}
+    std::string getRarityLevel()const{return '(' + rarity.title + ')';}
     static std::vector<std::shared_ptr<Item>>& getList(){return items;}
     virtual std::string getItemType()const=0;
     virtual int getPersonalizedIndex()const{return personalizedListIndex;} //returns index of obj in weapon,armor,potions vector

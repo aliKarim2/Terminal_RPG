@@ -39,7 +39,7 @@ public:
     Player(const std::string& myName) 
     : name(myName), currentPotions(MAX_POTIONS, nullptr), currentArmor(nullptr), currentWeapon(nullptr){
         //currentPotions has size 5, with all nullPtr (empty potions)
-
+        
         const Coord ORIGIN = {0,0};
         coord = ORIGIN;
 
@@ -209,17 +209,94 @@ public:
         return op;
     }
 
+    void viewInventory(){
+
+        viewWeapon();
+
+        std::cout << '\n';
+
+        viewArmor();
+        
+        std::cout << '\n';
+
+        viewPotions();
+    }
+    void viewWeapon(){
+        const int FW = 40;
+        const std::string DASH = "  -";
+        std::cout << std::left; //set output to left (right padding)
+
+        std::cout << std::setw(FW) << "Weapon: ";
+        std::cout << '\n';
+
+
+        if(currentWeapon == nullptr){
+            std::cout << "EMPTY\n";
+        }
+        else{
+            std::cout << DASH << std::setw(FW) << currentWeapon->getName();
+            std::cout << '\t' << std::setw(FW) << currentWeapon->getRarityLevel() << '\n';
+            std::cout << DASH << "DMG: " << currentWeapon->getDamage() << '\n';
+        }
+
+        
+    }
+    void viewArmor(){
+        const int FW = 40;
+        const std::string DASH = "  -";
+        std::cout << std::left; //set output to left (right padding)
+
+        std::cout << std::setw(FW) <<  "Armor: ";
+        std::cout << '\n';
+
+        if(currentArmor == nullptr){
+            std::cout << "EMPTY\n";
+        }
+        else{
+            std::cout << DASH << currentArmor->getName();
+            std::cout << '\t' << currentArmor->getRarityLevel() << '\n';
+            std::cout << DASH << "HP: " << currentArmor->getHP() << '\n';
+        }
+
+
+       
+    }
+    void viewPotions(){
+        const int FW = 40;
+        const std::string DASH = "  -";
+        std::cout << std::left; //set output to left (right padding)
+        std::cout << std::setw(FW) << "Potions: ";
+        std::cout << '\n';
+
+
+        for(int i = 0; i < MAX_POTIONS; i++){
+            std::cout << '(' << i+1 << ')'; //label the numbering
+            std::cout << ' ';
+
+            if(currentPotions[i] == nullptr){ //check if its empty
+                std::cout << "EMPTY\n";
+            }
+            else{
+                std::cout << std::setw(FW) << currentPotions[i]->getName();
+                std::cout << '\t' << std::setw(FW) << currentPotions[i]->getRarityLevel() << '\n';
+                std::cout << DASH << std::setw(FW) << currentPotions[i]->getDescription() << '\n';
+                std::cout << '\n';
+            }
+
+            
+        }
+
+    }
 
     void setWeapon(std::shared_ptr<Weapon> weapon){
         currentWeapon = weapon;
+        damage = currentWeapon->getDamage();
     }
     void setArmor(std::shared_ptr<Armor> armor){
         currentArmor = armor;
     }
     bool addPotion(std::shared_ptr<Potion> potion){
         bool filled = false;
-
-        
 
         //Loop thru currentPotions vector and find the first empty slot
         for(int i = 0; i < currentPotions.size(); i++){
@@ -237,6 +314,8 @@ public:
         return true;
     }
     
+
+
 
     //getters and setters
     void changeScore(int value){
