@@ -38,6 +38,23 @@ public:
     Enemy(){
     //Coord
         makeCoord();
+
+
+    //Damage and HP
+        const int MIN_STAT = 200;
+        const int MAX_STAT = 400;
+
+
+        int statpts = Random::getRandomInt(MIN_STAT,MAX_STAT) % 5; //stat points will be equal to boss hp + damage for balancing purposes
+        
+        
+        damage = Random::getRandomInt(statpts/5, 4*statpts/5) % 5; //damage can be 1/5 statpts to 4/5 statpts
+        HP = (statpts - damage) % 5; //HP will be based off of precalculated damage
+
+    //Score drop
+        scoreValue = statpts; //add a multiplier in child classes as needed
+
+
     }
     
     virtual ~Enemy(){
@@ -88,14 +105,13 @@ public:
         }
     
     Coord getCoord()const{return coord;}
-    void displayCoord(){
+    void displayCoord()const{
         std::cout << coord.x << ' ' << coord.y;
     }
 
 
-    Chest getDrops(){return dropLoot;}
+    Chest getDrops()const{return dropLoot;}
 
-    static std::vector<Coord> getUsedCoords(){return usedCoords;}
 
 
 };

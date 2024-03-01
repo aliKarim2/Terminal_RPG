@@ -59,6 +59,7 @@ public:
     }
 
     Coord getCoord(){return coord;}
+    static std::vector<Coord> getUsedCoords(){return usedCoords;}
     
 };
 std::vector<Coord> placedObject::usedCoords;

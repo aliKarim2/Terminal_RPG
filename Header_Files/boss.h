@@ -107,21 +107,19 @@ public:
         int index = Random::getRandomInt(0, bossNameList.size(), usedNames);//gets an index between 0 and size of vector
         name = bossNameList[index]; //set name to a randomly selected name
         usedNames.push_back(index);
-    //DAMAGE AND HP
-        //A number to represent the overall of a boss
-        int statpts = Random::getRandomInt(MIN_STAT,MAX_STAT);//stat points will be equal to boss hp + damage for balancing purposes
 
-        damage = Random::getRandomInt(statpts/5, 4*statpts/5); //damage can be 1/5 statpts to 4/5 statpts (so HP is 1/5 to 4/5)
-        HP = statpts - damage; //HP will be based off of precalculated damage
+    //DAMAGE AND HP
+
+        const int STAT_MULTIPLIER = 50;
+
+        damage *= STAT_MULTIPLIER;
+        HP     *= STAT_MULTIPLIER;
 
     //SCORE DROP
-        const int BOSS_SCORE_MULTIPLIER = 10; //bosses will generally have x10 higher score than normal enemies
+        const int BOSS_SCORE_MULTIPLIER = 10000;
+        //score should be based on strength of enemy (statpts)
+        scoreValue *= BOSS_SCORE_MULTIPLIER;
 
-        //score should be based on strength of boss (statpts)
-        scoreValue = statpts * BOSS_SCORE_MULTIPLIER;
-
-    //SPAWN POINT
-        //occurs in enemy constructor
         
 
     //ABILITY 
@@ -163,10 +161,7 @@ public:
             std::cout << "NO EFFECTS!\n";
     }
 
-    // char symbol() override{
-    //     const char SYMBOL = 'B';
-    //     return SYMBOL;
-    // }
+ 
 
     virtual void addToList(){
         // std::cout << "ADD TO BOSSEs/n";

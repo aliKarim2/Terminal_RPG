@@ -41,7 +41,6 @@ private:
     }
     
 protected:
-    static const int MINION_SCORE_MULTIPLIER;
 
     
     static std::vector<std::unique_ptr<Minion>> minions; //holds all minions + bosses
@@ -62,20 +61,16 @@ public:
         name = nameList[index]; //set name to a randomly selected name
         usedNames.push_back(index);
     //DAMAGE AND HP
-        int statpts = Random::getRandomInt(MIN_STAT,MAX_STAT); //stat points will be equal to boss hp + damage for balancing purposes
-        damage = Random::getRandomInt(statpts/5, 4*statpts/5); //damage can be 1/5 statpts to 4/5 statpts
-        HP = statpts - damage; //HP will be based off of precalculated damage
 
+        const int STAT_MULTIPLIER = 5;
+
+        damage *= STAT_MULTIPLIER;
+        HP     *= STAT_MULTIPLIER;
 
     //SCORE DROP
+        const int MINION_SCORE_MULTIPLIER = 1000;
         //score should be based on strength of enemy (statpts)
-        scoreValue = statpts * MINION_SCORE_MULTIPLIER;
-
-
-    //SPAWN POINT (OPTIMIZE LATER!)
-
-        // coord.x = 999;
-        // coord.y = 999;
+        scoreValue *= MINION_SCORE_MULTIPLIER;
        
     //LOOT
         static const float BEGIN = 0.0f;
@@ -124,7 +119,6 @@ public:
 std::vector<std::unique_ptr<Minion>> Minion::minions;
 bool Minion::initialized = false;
 std::vector<std::string> Minion::nameList;
-const int Minion::MINION_SCORE_MULTIPLIER = 1000;
 std::vector<int> Minion::xList;
 std::vector<int> Minion::yList;
 std::vector<int> Minion::usedNames;
