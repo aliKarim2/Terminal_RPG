@@ -123,6 +123,7 @@ int main(){
 }
 
 
+
 int openChest(Player& player, Chest& chest){
   int choice;
   std::cout << "You Found a Chest!\n";
