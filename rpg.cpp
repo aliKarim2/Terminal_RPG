@@ -184,37 +184,37 @@ while(running){
         }
     }
 
-    // for(const auto& b : bossList){
-    //     if(player.getCoord() == b->getCoord()){ //if player is on same square as minion
-    //         if(!fight(player, *b)){ //if they fight and player loses
-    //             std::cout << "You lose!\n";
-    //             running = false;
-    //             break;
-    //         }
-    //         else{//if player won
-    //             player.changeScore(b->getScore());//add minion drop score to player
-    //             std::cout << "YOU WON!\n";
-    //             //delete erased boss
-    //             bossList.erase(bossList.begin() + b->getID());
-    //             // minion::showAllEnemies();
-    //         }
+    for(const auto& b : bossList){
+        if(player.getCoord() == b->getCoord()){ //if player is on same square as minion
+            if(!fight(player, *b)){ //if they fight and player loses
+                std::cout << "You lose!\n";
+                running = false;
+                break;
+            }
+            else{//if player won
+                player.changeScore(b->getScore());//add minion drop score to player
+                std::cout << "YOU WON!\n";
+                //delete erased boss
+                bossList.erase(bossList.begin() + b->getID());
+                // minion::showAllEnemies();
+            }
         
-    //     }
-    // }
-    // for(const auto& chest : chestList){
-    //     if(player.getCoord() == chest->getCoord()){
-    //         std::cout << "OPEN CHEST!!!\n\n";
+        }
+    }
+    for(const auto& chest : chestList){
+        if(player.getCoord() == chest->getCoord()){
+            std::cout << "OPEN CHEST!!!\n\n";
 
-    //         // chest->showContents();
-    //         openChest(player, *chest);
+            // chest->showContents();
+            openChest(player, *chest);
 
-    //         chestList.erase(chestList.begin() + chest->getID());
-    //         //make it so that player can take all of the contents from chest if he wants
+            chestList.erase(chestList.begin() + chest->getID());
+            //make it so that player can take all of the contents from chest if he wants
 
 
-    //         // std::cin.get();
-    //     }
-    // }    
+            // std::cin.get();
+        }
+    }    
 }
  
     return 0;
