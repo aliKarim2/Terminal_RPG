@@ -165,11 +165,19 @@ int openChest(Player& player, Chest& chest){
 
     //Determine item type and act accoordingly
     {
-      if (std::shared_ptr<Weapon> weapon = std::dynamic_pointer_cast<Weapon>(chest.getLoot()[choice])){ 
-          player.setWeapon(weapon); //replace player item with selected loot
-          std::cout << "Successfully added it to your inventory!\n";
+      if (std::shared_ptr<Weapon> weapon = std::dynamic_pointer_cast<Weapon>(chest.getLoot()[choice])) {
 
-          chest.getLoot()[choice] = nullptr; //replace loot with null ptr
+          /*Swap the chest item and player item
+          we have to use chest.getLoot() 
+          when swapping to get the reference 
+          (address) of the item for a permanent swap
+          */
+          std::shared_ptr<Weapon> temp = weapon;
+          chest.getLoot()[choice] = player.getWeapon(); 
+          player.setWeapon(temp);
+
+        
+          std::cout << "Weapon successfully added to your inventory!\n";
           
       } else if (std::shared_ptr<Potion> potion = std::dynamic_pointer_cast<Potion>(chest.getLoot()[choice])) {
 
@@ -182,6 +190,11 @@ int openChest(Player& player, Chest& chest){
           }
             
       } else if (std::shared_ptr<Armor> armor = std::dynamic_pointer_cast<Armor>(chest.getLoot()[choice])) {
+
+          std::shared_ptr<Armor> temp = armor;
+          chest.getLoot()[choice] = player.getArmor();
+          player.setArmor(temp);          
+
           player.setArmor(armor);//replace player item with selected loot
           std::cout << "Successfully added it to your inventory!\n";
 
