@@ -18,6 +18,7 @@ std::ostream& operator<<(std::ostream& stream, const Coord& other){
 class placedObject{
     
 protected:
+    int ID;
     Coord coord;
     void makeCoord(){
             bool overlapping = false;
@@ -57,7 +58,7 @@ public:
     placedObject(){
         // makeCoord();
     }
-
+    int getID()const{return ID;}
     Coord getCoord(){return coord;}
     static std::vector<Coord> getUsedCoords(){return usedCoords;}
     

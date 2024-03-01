@@ -110,7 +110,7 @@ public:
 
     //DAMAGE AND HP
 
-        const int STAT_MULTIPLIER = 50;
+        const int STAT_MULTIPLIER = 5;
 
         damage *= STAT_MULTIPLIER;
         HP     *= STAT_MULTIPLIER;

@@ -26,7 +26,6 @@ protected:
     // static const int ENEMY_SCORE_MULTIPLIER;
     std::string name;
     int HP;
-    int ID; //holds the index of enemy in respective vector (enemies or bosses)
 
     int damage;
     int damageMult = 1;
@@ -45,14 +44,14 @@ public:
         const int MAX_STAT = 400;
 
 
-        int statpts = Random::getRandomInt(MIN_STAT,MAX_STAT) % 5; //stat points will be equal to boss hp + damage for balancing purposes
+        int statpts = Random::getRandomInt(MIN_STAT,MAX_STAT); //stat points will be equal to boss hp + damage for balancing purposes
         
         
-        damage = Random::getRandomInt(statpts/5, 4*statpts/5) % 5; //damage can be 1/5 statpts to 4/5 statpts
-        HP = (statpts - damage) % 5; //HP will be based off of precalculated damage
+        damage = Random::getRandomInt(statpts/5, 4*statpts/5); //damage can be 1/5 statpts to 4/5 statpts
+        HP = (statpts - damage); //HP will be based off of precalculated damage
 
     //Score drop
-        scoreValue = statpts; //add a multiplier in child classes as needed
+        scoreValue = statpts; //add a multiplier in child classes if needed
 
 
     }
@@ -97,7 +96,6 @@ public:
     int getScore()const{return scoreValue;}
     int getXcoord()const{return coord.x;}
     int getYcoord()const{return coord.y;}
-    int getID()const{return ID;}
     void setHP(int value){
             HP = value;
             if(HP < 0)

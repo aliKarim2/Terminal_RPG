@@ -50,10 +50,6 @@ public:
         
         ID = minions.size();
 
-        // std::cout << "ENTER CONST\n"; 
-        const int MIN_STAT = 200;
-        const int MAX_STAT = 400;
-
     //NAME
         fillLists();//fill nameList  
         int index = Random::getRandomInt(0, nameList.size()-1, usedNames);//gets an index between 0 and size of vector
@@ -62,13 +58,13 @@ public:
         usedNames.push_back(index);
     //DAMAGE AND HP
 
-        const int STAT_MULTIPLIER = 5;
+        const int STAT_MULTIPLIER = 1;
 
         damage *= STAT_MULTIPLIER;
         HP     *= STAT_MULTIPLIER;
 
     //SCORE DROP
-        const int MINION_SCORE_MULTIPLIER = 1000;
+        const int MINION_SCORE_MULTIPLIER = 10;
         //score should be based on strength of enemy (statpts)
         scoreValue *= MINION_SCORE_MULTIPLIER;
        
