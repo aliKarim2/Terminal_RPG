@@ -209,6 +209,25 @@ public:
         return op;
     }
 
+    int useItem(){
+        int choice;
+
+        viewPotions();
+
+        std::cout << "Which potion would you like to use? " 
+                     "Enter a number from 1 - " << currentPotions.size() << ".\n";
+
+        std::cin >> choice;
+        
+        choice--;//account for array indexing
+
+        std::cout << "Using " << currentPotions[choice]->getName() << "!\n";
+        std::cin.get();
+        return choice;
+    }
+
+
+
     //"View" Functions
     void viewInventory(){
 

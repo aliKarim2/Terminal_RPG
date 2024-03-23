@@ -1,6 +1,3 @@
-#include <iostream>
-#include <vector>
-
 //Header Files
 #include "Header_Files/player.h" //includes everything else 
 // #include "Header_Files/minion.h"
@@ -63,11 +60,11 @@ int newGame(Player& player){
     //instantiate objects
     {       
         const int MINION_SPAWN = 10; 
-        const int BOSS_SPAWN = 0;
+        const int BOSS_SPAWN = 10;
         // const int ARMOR_SPAWN = 10;
         // const int WEAPON_SPAWN = 10;
         // const int POTION_SPAWN = 10;
-        const int CHEST_SPAWN = 0;
+        const int CHEST_SPAWN = 2;
 
         Minion minionTest;
         Boss bossTest;
@@ -104,11 +101,18 @@ int newGame(Player& player){
     // std::cout << chestList[0]->getCoord() << '\n';
     std::cout << "MINION: ";
     std::cout << minionList[0]->getCoord() << '\n';
+    std::cout << "Boss: ";
+    std::cout << bossList[0]->getCoord() << '\n';
     // std::cout << "BOSS: ";
     // std::cout << bossList[0]->getCoord() << '\n';
+    
 
+    openChest(player, *chestList[0]);
+    openChest(player, *chestList[1]);
 
+    std::cin.get();
 
+    player.useItem();
 
     std::cin.get();
     // return 0;
@@ -252,6 +256,8 @@ while(fighting){ //while fight happening
         case ITEM: std::cout << "open inventory (NI)\n";
             break;
         case RUN: std::cout << "Fight ends and loses score? (NI)\n";
+                    player.useItem();
+
             break;
         default: std::cout << "Crit error!\n";
     }
