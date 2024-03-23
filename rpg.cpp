@@ -325,14 +325,14 @@ int openChest(Player& player, Chest& chest){
 
     if(chest.getLoot()[choice] == nullptr){
       std::cout << "You picked an empty slot! Pick a slot with an item in it!\n";
-      continue; //reset loop
+      continue;
     }
 
     std::cout << "You picked: " << chest.getLoot()[choice]->getName() << '\n';
 
-    //Determine item type and then swap chest item with player's item
+    //Determine item type and act accoordingly
     {
-        if (std::shared_ptr<Weapon> weapon = std::dynamic_pointer_cast<Weapon>(chest.getLoot()[choice])) {
+      if (std::shared_ptr<Weapon> weapon = std::dynamic_pointer_cast<Weapon>(chest.getLoot()[choice])) {
 
           /*Swap the chest item and player item
           we have to use chest.getLoot() 
@@ -343,32 +343,31 @@ int openChest(Player& player, Chest& chest){
           chest.getLoot()[choice] = player.getWeapon(); 
           player.setWeapon(temp);
 
+        
           std::cout << "Weapon successfully added to your inventory!\n";
           
-        } else if (std::shared_ptr<Potion> potion = std::dynamic_pointer_cast<Potion>(chest.getLoot()[choice])) {
+      } else if (std::shared_ptr<Potion> potion = std::dynamic_pointer_cast<Potion>(chest.getLoot()[choice])) {
 
           if(!player.addPotion(potion)){ //returns false if potion list is full
             std::cout << "You have the max amount of potions!\n";
           }
           else{
-            std::cout << "Potion successfully added to your inventory!\n";
+            std::cout << "Successfully added it to your inventory!\n";
             chest.getLoot()[choice] = nullptr;//replace loot with null ptr
           }
             
-        } else if (std::shared_ptr<Armor> armor = std::dynamic_pointer_cast<Armor>(chest.getLoot()[choice])) {
+      } else if (std::shared_ptr<Armor> armor = std::dynamic_pointer_cast<Armor>(chest.getLoot()[choice])) {
+
           std::shared_ptr<Armor> temp = armor;
           chest.getLoot()[choice] = player.getArmor();
           player.setArmor(temp);          
 
           player.setArmor(armor);//replace player item with selected loot
-          std::cout << "Armor successfully added it your inventory!\n";
+          std::cout << "Successfully added it to your inventory!\n";
 
-          chest.getLoot()[choice] = nullptr;//replace loot with null ptr
-        }
-    }   
-
-
-
+          // chest.getLoot()[choice] = nullptr;//replace loot with null ptr
+      }
+    }             
 
   }while(choice != -1); //while player has chest open
 

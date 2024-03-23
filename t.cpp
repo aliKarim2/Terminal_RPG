@@ -30,7 +30,7 @@ int main(){
     const int ARMOR_SPAWN = 1;
     const int WEAPON_SPAWN = 1;
     const int POTION_SPAWN = 1;
-    const int CHEST_SPAWN = 5;
+    const int CHEST_SPAWN = 6;
     const int BOSS_SPAWN = 1;
     const int MINION_SPAWN = 1;
 
@@ -98,6 +98,10 @@ int main(){
 
     std::cin.get();
     openChest(player, *chestList[0]);
+    openChest(player, *chestList[1]);
+    openChest(player, *chestList[2]);
+    openChest(player, *chestList[3]);
+    openChest(player, *chestList[4]);
 
     std::cout << "CLOSED CHEST NOW\n";
 
@@ -108,7 +112,7 @@ int main(){
 
 
 
-    openChest(player, *chestList[1]);
+    openChest(player, *chestList[5]);
 
     std::cout << "CLOSED CHEST NOW\n";
 
@@ -199,7 +203,7 @@ int openChest(Player& player, Chest& chest){
           player.setArmor(armor);//replace player item with selected loot
           std::cout << "Successfully added it to your inventory!\n";
 
-          chest.getLoot()[choice] = nullptr;//replace loot with null ptr
+          // chest.getLoot()[choice] = nullptr;//replace loot with null ptr
       }
     }             
 
