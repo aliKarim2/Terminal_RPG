@@ -211,18 +211,48 @@ public:
 
     int useItem(){
         int choice;
-
+        int potionsCt = getPotionCt();
         viewPotions();
 
-        std::cout << "Which potion would you like to use? " 
-                     "Enter a number from 1 - " << currentPotions.size() << ".\n";
 
-        std::cin >> choice;
+        if(potionsCt == 0){
+            std::cout << "You do not have any items right now.\n";
+            return -1; //error flag
+        }
+
+
+        std::cout << "Which potion would you like to use? " 
+                     "Enter a number from 1 - " << potionsCt << ".\n";
+
+        //INPUT VALIDATION
+        do{
+            if (!(std::cin >> choice)) { //if input not int
+                std::cin.clear();  // Clear the error flag
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');  // Discard invalid input
+                std::cout << "Invalid input. Please enter a number from 1 - " << potionsCt << ".\n";
+            } else {
+                if(currentPotions[choice-1] == nullptr){ //if slot is empty
+                    std::cout << "That slot is empty. Please pick a slot with a potion in it.\n";
+                }
+                else if(choice >= 1 && choice < potionsCt){//if in the valid range
+                    choice--;       //account for array indexing
+                    break;          //input should be valid now
+                }
+                else{
+                    std::cout << "Invalid input. Please enter a number from 1 - " << potionsCt << ".\n";
+                }           
+
+            }
+        }while(true);
         
-        choice--;//account for array indexing
+        
 
         std::cout << "Using " << currentPotions[choice]->getName() << "!\n";
         std::cin.get();
+
+
+
+
         return choice;
     }
 
@@ -339,6 +369,17 @@ public:
     std::shared_ptr<Weapon>& getWeapon(){return currentWeapon;}
     std::vector<std::shared_ptr<Potion>>& getPotions(){return currentPotions;}
 
+
+    int getPotionCt(){
+        int ct = 0;
+        for(const auto& potion : currentPotions){
+            if(potion == nullptr){ //if one is nullptr, then it is empty and all other after are empty
+                return ct;
+            }
+            ct++;
+        }        
+        return ct;
+    }
 
 
     //General getters and setters
