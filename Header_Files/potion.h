@@ -149,6 +149,9 @@ class Potion : public Item {
         return myDescription;
     }
     char makeType(){
+        const char HEAL = 'H';
+        const char STRENGTH = 'S';
+        const char WEAKNESS = 'W';
         // char can be:
         // H: heals player
         // S: increase player damageMult
@@ -158,13 +161,13 @@ class Potion : public Item {
         switch (x)
         {
         case 1:
-            myType = 'H';
+            myType = HEAL;
             break;
         case 2:
-            myType = 'S';
+            myType = STRENGTH;
             break;
         case 3:
-            myType = 'W';
+            myType = WEAKNESS;
             break;
         default:
             std::cout << "ERROR in potion.h makeName effect\n";
@@ -287,7 +290,7 @@ public:
     
     //GETTERS
     std::string getItemType()const override{return "(POTION)";}
-    char getType()const{return type;}
+    char getPotionType()const{return type;}
     int getPotency()const{return potency;}
     bool getEnergized()const{return energized;}
     std::string getDescription()const{return description;}

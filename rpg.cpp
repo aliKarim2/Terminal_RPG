@@ -227,7 +227,7 @@ void instructions(){
     std::cout << "HOW2PLAY\n";
 
 }
-bool fight(Player& player, Enemy& minion){
+bool fight(Player& player, Enemy& enemy){
 
     const int ATK = 1;
     const int ITEM = 2;
@@ -245,15 +245,62 @@ while(fighting){ //while fight happening
    
 
     player.Update();
-    minion.showInfo();
+    enemy.showInfo();
     
 
     //player turn
     switch(player.atkChoice()){
-        //set minion's hp to his current hp minus player's ATK
-        case ATK: minion.setHP(minion.getHP() - player.getTotalDamage());
+        //set enemy's hp to his current hp minus player's ATK
+        case ATK: 
+            enemy.setHP(enemy.getHP() - player.getTotalDamage());
             break;
-        case ITEM: std::cout << "open inventory (NI)\n";
+        case ITEM:
+            {
+                const char HEAL = 'H';
+                const char STRENGTH = 'S';
+                const char WEAKNESS = 'W';
+
+                int potionSlot = player.useItem();
+
+                if(potionSlot == -1){ //if it returns an error bc no potions availa//////////////////////////////////////
+
+                    std::cout << "you had no potions...\n";
+                    std::cout << "FIX LATER!\n";
+                    return 0;
+                }
+
+                std::shared_ptr<Potion> chosenPot = player.getPotions()[potionSlot];
+                
+                switch (chosenPot->getPotionType()){
+                    case HEAL:
+
+
+                        //set player's hp to its own hp plus the heal affect
+                        //heal affect is equal to the potions potency (a number) as a percent (/100) times the hp of the player
+                        player.setHP(player.getHP() + (player.getMaxHP() * (chosenPot->getPotency()/100)));
+                        break;
+
+                    case STRENGTH:
+                        //set player's damage mult to pot effect 
+                        //getPotency returns a number, /100 to get the percent
+                        player.setDamageMult(player.getDamageMult() + chosenPot->getPotency()/100);
+                        break;
+                    case WEAKNESS:
+                        //set ENEMY's damage mult to pot effect (should be < 1)
+
+                        
+
+                        break;
+                    default:
+                        std::cerr << "ERROR IN FIGHT SWITCH rgp.cpp\n";
+                        break;
+                }
+
+            } 
+            
+
+
+
             break;
         case RUN: std::cout << "Fight ends and loses score? (NI)\n";
                     player.useItem();
@@ -262,7 +309,7 @@ while(fighting){ //while fight happening
         default: std::cout << "Crit error!\n";
     }
 
-    if(minion.getHP() <= 0){ //if minion dead
+    if(enemy.getHP() <= 0){ //if minion dead
         // std::cout << "Player Wins!\n";
 
         // player.changeScore(minion.getScore());//add minion drop score to player (do this in newGame())
@@ -273,7 +320,7 @@ while(fighting){ //while fight happening
 
     //minion turn
     //Set player HP to his current hp minus minion ATK
-    player.setHP(player.getHP() - minion.getTotalDamage());
+    player.setHP(player.getHP() - enemy.getTotalDamage());
 
     if(player.getHP() <= 0){ //if minion dead
         // std::cout << "minion Wins!\n";
@@ -286,7 +333,7 @@ while(fighting){ //while fight happening
     std::cout << "THE FIGHT IS OVER!\n";
 
     player.Update();
-    minion.showInfo();
+    enemy.showInfo();
 
     return outcome;
 }

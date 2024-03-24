@@ -234,7 +234,7 @@ public:
                 if(currentPotions[choice-1] == nullptr){ //if slot is empty
                     std::cout << "That slot is empty. Please pick a slot with a potion in it.\n";
                 }
-                else if(choice >= 1 && choice < potionsCt){//if in the valid range
+                else if(choice >= 1 && choice <= potionsCt){//if in the valid range
                     choice--;       //account for array indexing
                     break;          //input should be valid now
                 }
@@ -258,7 +258,7 @@ public:
 
 
 
-    //"View" Functions
+    //"View" Functions for items
     void viewInventory(){
 
         viewWeapon();
@@ -288,8 +288,6 @@ public:
             std::cout << '\t' << std::setw(FW) << currentWeapon->getRarityLevel() << '\n';
             std::cout << DASH << "DMG: " << currentWeapon->getDamage() << '\n';
         }
-
-        
     }
     void viewArmor(){
         const int FW = 40;
@@ -307,9 +305,6 @@ public:
             std::cout << '\t' << currentArmor->getRarityLevel() << '\n';
             std::cout << DASH << "HP: " << currentArmor->getHP() << '\n';
         }
-
-
-       
     }
     void viewPotions(){
         const int FW = 40;
@@ -407,7 +402,12 @@ public:
     unsigned int getDamage(){return damage;}
     unsigned int getDamageMult(){return damageMult;}
     unsigned int getTotalDamage(){return totalDamage;}
+    void setDamageMult(int value){
 
+        value = value < 0 ? 0 : value;
+
+        damageMult = value;
+    }
     
     // std::shared_ptr<Armor> getArmor(){return currentArmor;}
 
