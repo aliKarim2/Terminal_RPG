@@ -59,7 +59,7 @@ int newGame(Player& player){
     
     //instantiate objects
     {       
-        const int MINION_SPAWN = 10; 
+        // const int MINION_SPAWN = 10; 
         const int BOSS_SPAWN = 10;
         // const int ARMOR_SPAWN = 10;
         // const int WEAPON_SPAWN = 10;
@@ -83,7 +83,7 @@ int newGame(Player& player){
         // potionTest.test = true;
         
         // std::cout << "C1\n";
-        minionTest.make(MINION_SPAWN);
+        // minionTest.make(MINION_SPAWN);
         bossTest.make(BOSS_SPAWN);
 
         // weaponTest.make(WEAPON_SPAWN);
@@ -98,9 +98,9 @@ int newGame(Player& player){
     
     std::cout << "LOCATIONS\n";
     // std::cout << "CHEST: ";
-    // std::cout << chestList[0]->getCoord() << '\n';
-    std::cout << "MINION: ";
-    std::cout << minionList[0]->getCoord() << '\n';
+    // // std::cout << chestList[0]->getCoord() << '\n';
+    // std::cout << "MINION: ";
+    // std::cout << minionList[0]->getCoord() << '\n';
     std::cout << "Boss: ";
     std::cout << bossList[0]->getCoord() << '\n';
 
@@ -153,15 +153,22 @@ while(running){
                 std::cout << "YOU WON!\n";
 
 
+                //Let player loot the minion's loot after death
+                std::cout << "The " << minion->getName() << " dropped a chest!\n";
+
+
+
+                //BADD----------
+                // Chest myChest = minion->getDrops();
+
+                // openChest(player, myChest);
+
+
                 //deletes defeated minion
                 auto it = std::remove_if(minionList.begin(), minionList.end(), [](const auto& m){
                     return m->getHP() == 0;
                 });
                 minionList.erase(it, minionList.end());
-
-                //Let player loot the minion's loot after death
-                openChest(player, minion->getDrops());
-
 
                 //state enemies remaining
                 std::cout << "Enemies remaining: " << minionList.size() << '\n';
@@ -178,23 +185,39 @@ while(running){
         }
     }
 
-    for(const auto& b : bossList){
-        if(player.getCoord() == b->getCoord()){ //if player is on same square as minion
-            if(!fight(player, *b)){ //if they fight and player loses
+    for(const auto& boss : bossList){
+        if(player.getCoord() == boss->getCoord()){ //if player is on same square as minion
+            if(!fight(player, *boss)){ //if they fight and player loses
                 std::cout << "You lose!\n";
                 running = false;
                 break;
             }
             else{//if player won
-                player.changeScore(b->getScore());//add minion drop score to player
+                player.changeScore(boss->getScore());//add minion drop score to player
                 std::cout << "YOU WON!\n";
+
+                //Let player loot the boss's loot after death
+
+                Chest myChest = boss->getDrops();
+
+                std::cout << boss->getName() << " dropped a chest!\n";
+                // openChest(player, myChest);
+
                 //delete erased boss
-                bossList.erase(bossList.begin() + b->getID());
+                boss->setOutOfBounds();
+
+                bossList.erase(bossList.begin() + boss->getID());
                 // minion::showAllEnemies();
+
+                std::cout << "DELETED boss\n";
+
+                break;
+                std::cout << "SHOULDNT SEE THIS LINE\n";
             }
         
         }
     }
+    std::cout << "HI\n";
     for(const auto& chest : chestList){
         if(player.getCoord() == chest->getCoord()){
             std::cout << "OPEN CHEST!!!\n\n";
@@ -336,7 +359,6 @@ while(fighting){ //while fight happening
 }
 int openChest(Player& player, Chest& chest){
   int choice;
-  std::cout << "You Found a Chest!\n";
   std::cout << "CONTENTS: \n";
 
 

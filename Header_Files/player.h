@@ -30,7 +30,7 @@ class Player : public placedObject{
     static const int MAX_POTIONS;
     
     //Damage
-    unsigned int damage = 500; //TEST VALUE
+    unsigned int damage = 50000; //TEST VALUE
     unsigned int damageMult = 1;
     unsigned int totalDamage = damage * damageMult;
 
