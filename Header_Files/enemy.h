@@ -90,9 +90,18 @@ public:
     //GETTERS and SETTERS
     std::string getName()const{return name;}
     int getHP()const{return HP;}
+
     int getDamage()const{return damage;}
     int getDamageMult()const{return damageMult;}
     int getTotalDamage()const{return damage * damageMult;}
+    void setDamageMult(int value){
+
+        value = value < 0 ? 0 : value;
+
+        damageMult = value;
+    }
+
+
     int getScore()const{return scoreValue;}
     int getXcoord()const{return coord.x;}
     int getYcoord()const{return coord.y;}

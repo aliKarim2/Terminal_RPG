@@ -103,27 +103,17 @@ int newGame(Player& player){
     std::cout << minionList[0]->getCoord() << '\n';
     std::cout << "Boss: ";
     std::cout << bossList[0]->getCoord() << '\n';
-    // std::cout << "BOSS: ";
-    // std::cout << bossList[0]->getCoord() << '\n';
-    
-
-    openChest(player, *chestList[0]);
-    openChest(player, *chestList[1]);
-
-    std::cin.get();
-
-    player.useItem();
-
-    std::cin.get();
-    // return 0;
-
-    // std::cout << minionList[0]->getCoord() << '\n'; //WORKSSSSS
 
 
+    // openChest(player, *chestList[0]);
+    // openChest(player, *chestList[1]);
 
-    // player.Update();
+    // std::cin.get();
 
+    // player.useItem();
 
+    // std::cin.get();
+  
 
     std::cout << "\n\n\n";
 
@@ -162,22 +152,22 @@ while(running){
 
                 std::cout << "YOU WON!\n";
 
-                //deletes defeated minion
 
+                //deletes defeated minion
                 auto it = std::remove_if(minionList.begin(), minionList.end(), [](const auto& m){
                     return m->getHP() == 0;
                 });
                 minionList.erase(it, minionList.end());
 
-                // if(minion->getHP() <= 0){
-                //     minionList.erase(minionList.begin() + minion->getID());
-                //     std::cout << "DELETED!\n";
-                // }
-                // else{
-                //     std::cout << "DIDNT DELETE?\n";
-                // }
+                //Let player loot the minion's loot after death
+                openChest(player, minion->getDrops());
+
+
+                //state enemies remaining
                 std::cout << "Enemies remaining: " << minionList.size() << '\n';
                 
+
+                //Give next coord
                 if(minionList.size() >= 1){
                     std::cout << minionList[0]->getCoord() << '\n';
                 }
@@ -255,6 +245,7 @@ while(fighting){ //while fight happening
             enemy.setHP(enemy.getHP() - player.getTotalDamage());
             break;
         case ITEM:
+        
             {
                 const char HEAL = 'H';
                 const char STRENGTH = 'S';
@@ -271,6 +262,12 @@ while(fighting){ //while fight happening
 
                 std::shared_ptr<Potion> chosenPot = player.getPotions()[potionSlot];
                 
+                //if potion is energized
+                if(chosenPot->getEnergized()){
+                    //skip enemy turn
+                }
+
+
                 switch (chosenPot->getPotionType()){
                     case HEAL:
 
@@ -288,7 +285,7 @@ while(fighting){ //while fight happening
                     case WEAKNESS:
                         //set ENEMY's damage mult to pot effect (should be < 1)
 
-                        
+                        enemy.setDamageMult(enemy.getDamageMult() - chosenPot->getPotency()/100);
 
                         break;
                     default:
