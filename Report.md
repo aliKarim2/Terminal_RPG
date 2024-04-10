@@ -12,3 +12,17 @@
 - This function should lead to undefined behavior in the first place, but it doesnt
 - Currently using a system that checks for all bosses w/ hp = 0, and deleting all of those
 - May switch to a system where I specifically delete the boss with an ID?
+
+### openChest() function crashes when I change droploot (remove items)
+- am not sure why it happens
+- No problems happen when I open a regular chest (not enemy loot)
+- May have to rewrite the way openChest() works
+
+# Upcoming Changes
+- Change how openChest works
+- I want it so that the greatness of a chest depends on the enemy that drops it
+- ex: a boss drops better loot than a minion
+- Can make it so chest is generated inside function?
+- Can make it so items are generated inside function?
+- 
+
