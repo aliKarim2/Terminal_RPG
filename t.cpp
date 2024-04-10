@@ -96,12 +96,19 @@ int main(){
     player.viewInventory();
 
 
+
+
     std::cin.get();
-    openChest(player, *chestList[0]);
-    openChest(player, *chestList[1]);
-    openChest(player, *chestList[2]);
-    openChest(player, *chestList[3]);
-    openChest(player, *chestList[4]);
+
+    Chest chest1;
+
+    openChest(player, chest1);
+
+    // openChest(player, *chestList[0]);
+    // openChest(player, *chestList[1]);
+    // openChest(player, *chestList[2]);
+    // openChest(player, *chestList[3]);
+    // openChest(player, *chestList[4]);
 
     std::cout << "CLOSED CHEST NOW\n";
 
